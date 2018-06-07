@@ -1,4 +1,4 @@
-package com.androidapps.muradahmad.calmify;
+package com.ubiss2018.dev.ubiss2018;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -63,7 +63,7 @@ public class SessionData extends AppCompatActivity {
             // preparing list data
             prepareListData();
 
-            listAdapter = new ExpandableAdapter(this, listDataHeader, listDataChild);
+            listAdapter = new com.androidapps.muradahmad.calmify.ExpandableAdapter(this, listDataHeader, listDataChild);
 
             // setting list adapter
             expListView.setAdapter(listAdapter);

@@ -1,4 +1,4 @@
-package com.androidapps.muradahmad.calmify;
+package com.ubiss2018.dev.ubiss2018;
 
 import android.content.Context;
 import android.graphics.Typeface;
