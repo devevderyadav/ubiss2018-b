@@ -18,12 +18,12 @@ android {
     }
 
 
-
 }
 
 
 repositories {
-    maven { url 'https://jitpack.io' } //this allows JIT library generation directly from GitHub source-code
+    maven { url 'https://jitpack.io' }
+    //this allows JIT library generation directly from GitHub source-code
 }
 
 configurations.all {
