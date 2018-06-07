@@ -209,14 +209,20 @@ public class Questionnaire extends AppCompatActivity {
                 Log.i("Questionnaire", "mood: " + mood);
                 Log.i("Questionnaire", "location: " + location);
 
-                db = new DatabaseHandler(getApplicationContext());
 
-                MeditationSession meditation = new MeditationSession("1", "angry", "home", "10 minutes",
-                        "birds", "guided by Erkki", "sad", "10000000000");
+                // Start NewActivity.class
+                Intent myIntent = new Intent(Questionnaire.this,
+                        Play.class);
+                startActivity(myIntent);
 
-                db.addMeditationSession(meditation);
+                //db = new DatabaseHandler(getApplicationContext());
 
-                db.getMeditationSessions();
+                //MeditationSession meditation = new MeditationSession("1", "angry", "home", "10 minutes",
+                //        "birds", "guided by Erkki", "sad", "10000000000");
+
+                //db.addMeditationSession(meditation);
+
+                //db.getMeditationSessions();
             }
         });
     }
