@@ -1,6 +1,7 @@
 package com.ubiss2018.dev.ubiss2018;
 
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 
 import com.aware.*;
 
+import com.aware.providers.Accelerometer_Provider;
 import com.aware.ui.PermissionsHandler;
 
 
@@ -105,6 +107,24 @@ public class MainActivity extends AppCompatActivity {
             if (fitbit_device != null && fitbit_device.moveToFirst()) {
                 Log.d("Calmify-devices", DatabaseUtils.dumpCursorToString(fitbit_device));
             }
+
+            Aware.startAccelerometer(this);
+
+            Accelerometer.setSensorObserver(new Accelerometer.AWARESensorObserver() {
+                @Override
+                public void onAccelerometerChanged(ContentValues contentValues) {
+                    double x = contentValues.getAsDouble(Accelerometer_Provider.Accelerometer_Data.VALUES_0);
+                    double y = contentValues.getAsDouble(Accelerometer_Provider.Accelerometer_Data.VALUES_1);
+                    double z = contentValues.getAsDouble(Accelerometer_Provider.Accelerometer_Data.VALUES_2);
+
+                    double axis_power = Math.sqrt(x*x + y*y + z*z);
+
+                    /*Log.d("debug", String.format("Power: %f",axis_power));
+*/
+                    Log.d("debug", String.format("Z: %f",z*z));
+                   /* Log.d("debug", String.format("Y: %f",y*y));*/
+                }
+            });
 
         } else {
             //ask the permissions using AWARE's PermissionsHandler class. Return to this activity when done.
