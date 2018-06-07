@@ -28,7 +28,7 @@ public class SessionData extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.session_data);
+        setContentView(R.layout.activity_session);
 
 
  /*       Button btnSessionSetting = (Button) findViewById(R.id.session);
@@ -63,7 +63,7 @@ public class SessionData extends AppCompatActivity {
             // preparing list data
             prepareListData();
 
-            listAdapter = new com.androidapps.muradahmad.calmify.ExpandableAdapter(this, listDataHeader, listDataChild);
+            listAdapter = new ExpandableAdapter(this, listDataHeader, listDataChild);
 
             // setting list adapter
             expListView.setAdapter(listAdapter);

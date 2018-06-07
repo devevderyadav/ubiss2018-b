@@ -1,5 +1,4 @@
-package com.androidapps.muradahmad.calmify;
-
+package com.ubiss2018.dev.ubiss2018;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -60,7 +59,7 @@ public class SessionSetting extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.session_data);
+        setContentView(R.layout.activity_session);
 
 
  /*       Button btnSessionSetting = (Button) findViewById(R.id.session);

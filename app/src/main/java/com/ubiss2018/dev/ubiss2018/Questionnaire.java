@@ -211,8 +211,12 @@ public class Questionnaire extends AppCompatActivity {
 
 
                 // Start NewActivity.class
-                Intent myIntent = new Intent(Questionnaire.this,
+              /*  Intent myIntent = new Intent(Questionnaire.this,
                         Play.class);
+                startActivity(myIntent);*/
+
+                Intent myIntent = new Intent(Questionnaire.this,
+                        SessionData.class);
                 startActivity(myIntent);
 
                 //db = new DatabaseHandler(getApplicationContext());
