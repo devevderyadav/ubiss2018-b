@@ -1,15 +1,11 @@
 package com.ubiss2018.dev.ubiss2018;
 
-<<<<<<< HEAD
-
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.net.Uri;
-=======
 import android.content.Intent;
->>>>>>> ui-branch
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -38,7 +34,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-<<<<<<< HEAD
     SessionHRs  sessionHRs= new SessionHRs();
 
     /*Context context;*/
@@ -64,16 +59,13 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     };*/
-=======
     Button meditate_button;
->>>>>>> ui-branch
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-<<<<<<< HEAD
        /* mTextMessage = (TextView) findViewById(R.id.message);*/
         /*BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);*/
        /* navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -146,7 +138,6 @@ public class MainActivity extends AppCompatActivity {
 
 
                 }
-=======
         meditate_button = (Button) findViewById(R.id.meditate_button);
 
         // Capture button clicks
@@ -159,7 +150,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
->>>>>>> ui-branch
 
             Uri devices  = Uri.parse("content://"+getPackageName()+".provider.fitbit/fitbit_devices");
             Cursor fitbit_device = getContentResolver().query(devices,null, null, null,null);
