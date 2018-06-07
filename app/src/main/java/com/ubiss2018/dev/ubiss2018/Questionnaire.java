@@ -11,10 +11,11 @@ import android.widget.RadioButton;
 
 public class Questionnaire extends AppCompatActivity {
 
-    Button back_button;
+    Button back_button, next_button;
 
     RadioButton alert_button, angry_button, anxious_button, frustrated_button, happy_button, tired_button;
     RadioButton home_button, work_button, bed_button, break_button, train_button, airplane_button;
+    String mood, location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,7 @@ public class Questionnaire extends AppCompatActivity {
         setContentView(R.layout.activity_questionnaire);
 
         back_button = (Button) findViewById(R.id.back_button);
+        next_button = (Button) findViewById(R.id.next_button);
 
         alert_button = (RadioButton) findViewById(R.id.alert_button);
         angry_button = (RadioButton) findViewById(R.id.angry_button);
@@ -36,6 +38,9 @@ public class Questionnaire extends AppCompatActivity {
         break_button = (RadioButton) findViewById(R.id.break_button);
         train_button = (RadioButton) findViewById(R.id.train_button);
         airplane_button = (RadioButton) findViewById(R.id.airplane_button);
+
+        mood="";
+        location="";
 
         // top radio buttons
 
@@ -58,6 +63,8 @@ public class Questionnaire extends AppCompatActivity {
                 frustrated_button.setChecked(false);
                 happy_button.setChecked(false);
                 tired_button.setChecked(false);
+
+                mood="alert";
             }
         });
 
@@ -69,6 +76,7 @@ public class Questionnaire extends AppCompatActivity {
                 frustrated_button.setChecked(false);
                 happy_button.setChecked(false);
                 tired_button.setChecked(false);
+                mood="angry";
             }
         });
 
@@ -80,6 +88,7 @@ public class Questionnaire extends AppCompatActivity {
                 frustrated_button.setChecked(false);
                 happy_button.setChecked(false);
                 tired_button.setChecked(false);
+                mood="anxious";
             }
         });
 
@@ -91,6 +100,7 @@ public class Questionnaire extends AppCompatActivity {
                 frustrated_button.setChecked(true);
                 happy_button.setChecked(false);
                 tired_button.setChecked(false);
+                mood="frustrated";
             }
         });
 
@@ -102,6 +112,7 @@ public class Questionnaire extends AppCompatActivity {
                 frustrated_button.setChecked(false);
                 happy_button.setChecked(true);
                 tired_button.setChecked(false);
+                mood="happy";
             }
         });
 
@@ -113,6 +124,7 @@ public class Questionnaire extends AppCompatActivity {
                 frustrated_button.setChecked(false);
                 happy_button.setChecked(false);
                 tired_button.setChecked(true);
+                mood="tired";
             }
         });
 
@@ -126,6 +138,7 @@ public class Questionnaire extends AppCompatActivity {
                 break_button.setChecked(false);
                 train_button.setChecked(false);
                 airplane_button.setChecked(false);
+                location="home";
             }
         });
 
@@ -137,6 +150,7 @@ public class Questionnaire extends AppCompatActivity {
                 break_button.setChecked(false);
                 train_button.setChecked(false);
                 airplane_button.setChecked(false);
+                location="work";
             }
         });
 
@@ -148,6 +162,7 @@ public class Questionnaire extends AppCompatActivity {
                 break_button.setChecked(false);
                 train_button.setChecked(false);
                 airplane_button.setChecked(false);
+                location="bed";
             }
         });
 
@@ -159,6 +174,7 @@ public class Questionnaire extends AppCompatActivity {
                 break_button.setChecked(true);
                 train_button.setChecked(false);
                 airplane_button.setChecked(false);
+                location="break";
             }
         });
 
@@ -170,6 +186,7 @@ public class Questionnaire extends AppCompatActivity {
                 break_button.setChecked(false);
                 train_button.setChecked(true);
                 airplane_button.setChecked(false);
+                location="train";
             }
         });
 
@@ -181,8 +198,15 @@ public class Questionnaire extends AppCompatActivity {
                 break_button.setChecked(false);
                 train_button.setChecked(false);
                 airplane_button.setChecked(true);
+                location="airplane";
             }
         });
 
+        next_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Log.i("Questionnaire", "mood: " + mood);
+                Log.i("Questionnaire", "location: " + location);
+            }
+        });
     }
 }
