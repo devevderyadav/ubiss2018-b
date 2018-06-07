@@ -21,9 +21,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Questionnaire"></activity>
-        <activity android:name=".SessionData"></activity>
-        <activity android:name=".Play"></activity>
+        <activity android:name=".Questionnaire" />
+        <activity android:name=".PostQuestionnaire" />
+        <activity android:name=".SessionData" />
+        <activity android:name=".Play" />
+        <activity android:name=".Results"></activity>
     </application>
 
 </manifest>

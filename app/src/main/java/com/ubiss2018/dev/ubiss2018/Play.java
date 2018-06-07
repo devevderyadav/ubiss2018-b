@@ -1,5 +1,6 @@
 package com.ubiss2018.dev.ubiss2018;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -57,6 +58,10 @@ public class Play extends AppCompatActivity {
                         txtTimer.setText("FINISH!!");
                         play.setText("Play");
                         mediaPlayer.stop();
+
+                        Intent myIntent = new Intent(Play.this,
+                                PostQuestionnaire.class);
+                        startActivity(myIntent);
                     }
 
                 }.start();
