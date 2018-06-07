@@ -15,18 +15,27 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+
 import com.aware.*;
 
+import com.aware.plugin.fitbit.Plugin;
+import com.aware.plugin.fitbit.Provider;
 import com.aware.providers.Accelerometer_Provider;
 import com.aware.ui.PermissionsHandler;
 
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    SessionHRs  sessionHRs= new SessionHRs();
+
     /*Context context;*/
 
-    private TextView mTextMessage;
+   /* private TextView mTextMessage;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -46,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             }
             return false;
         }
-    };
+    };*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +63,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
        /* mTextMessage = (TextView) findViewById(R.id.message);*/
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
+        /*BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);*/
+       /* navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+*/
 
     }
 
@@ -94,13 +103,37 @@ public class MainActivity extends AppCompatActivity {
 
             Aware.startPlugin(this, "com.aware.plugin.fitbit");
 
-            Uri database = Uri.parse("content://"+getPackageName()+".provider.fitbit/fitbit_data");
-
-            Cursor fitbit_data = getContentResolver().query(database,null, null, null,null);
+            Cursor fitbit_data = getContentResolver().query(Provider.Fitbit_Data.CONTENT_URI,
+                    new String[]{Provider.Fitbit_Data.TIMESTAMP, Provider.Fitbit_Data.FITBIT_JSON},
+                    Provider.Fitbit_Data.DATA_TYPE + " like 'heartrate'", null,
+                    Provider.Fitbit_Data.TIMESTAMP + " DESC LIMIT 1");
 
             if (fitbit_data != null && fitbit_data.moveToFirst()) {
-                Log.d("Calmify", DatabaseUtils.dumpCursorToString(fitbit_data));
-            }
+
+                try {
+                    JSONObject hr = new JSONObject(fitbit_data.getString(fitbit_data.getColumnIndex(Provider.Fitbit_Data.FITBIT_JSON)));
+
+                    JSONArray restingHR = hr.getJSONArray("activities-heart");
+
+                    Log.d("restingHR", String.format("%d",  restingHR.getJSONObject(0).getJSONObject("value").getInt("restingHeartRate")));
+                    restingHR.getJSONObject(0).getJSONObject("value").getInt("restingHeartRate");
+
+                    Log.d("lowestHR", String.format("%d", sessionHRs.getLowestHR(hr)));
+
+                    Log.d("highestHR", String.format("%d", sessionHRs.getHighestHR(hr)));
+
+
+                    /*Log.d("restingHeartRate",  acthr.get);
+*/
+                    Log.d("HR", hr.toString(5));
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+
+                }
 
             Uri devices  = Uri.parse("content://"+getPackageName()+".provider.fitbit/fitbit_devices");
             Cursor fitbit_device = getContentResolver().query(devices,null, null, null,null);
@@ -108,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("Calmify-devices", DatabaseUtils.dumpCursorToString(fitbit_device));
             }
 
-            Aware.startAccelerometer(this);
+            /*Aware.startAccelerometer(this);
 
             Accelerometer.setSensorObserver(new Accelerometer.AWARESensorObserver() {
                 @Override
@@ -119,12 +152,48 @@ public class MainActivity extends AppCompatActivity {
 
                     double axis_power = Math.sqrt(x*x + y*y + z*z);
 
-                    /*Log.d("debug", String.format("Power: %f",axis_power));
-*/
-                    Log.d("debug", String.format("Z: %f",z*z));
-                   /* Log.d("debug", String.format("Y: %f",y*y));*/
+                    *//*Log.d("debug", String.format("Power: %f",axis_power));
+*//*
+
+
+                    if(z*z>2.5){
+
+                        Log.d("debug", String.format("Z: %f",z*z));
+
+                    }
+
+                   *//* Log.d("debug", String.format("Y: %f",y*y));*//*
+
                 }
             });
+
+*/
+           /* Aware.startScreen(this);*/
+
+
+
+           /* Screen.setSensorObserver(new Screen.AWARESensorObserver() {
+                @Override
+                public void onScreenOn() {
+                    Log.d("ScreenStatus", "Screen On");
+                }
+
+                @Override
+                public void onScreenOff() {
+                   *//* Log.d('Screen Status','Screen of time');
+*//*
+                }
+
+                @Override
+                public void onScreenLocked() {
+
+                }
+
+                @Override
+                public void onScreenUnlocked() {
+
+                }
+            });*/
 
         } else {
             //ask the permissions using AWARE's PermissionsHandler class. Return to this activity when done.
