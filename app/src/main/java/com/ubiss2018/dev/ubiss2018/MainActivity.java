@@ -14,20 +14,17 @@ import android.view.View;
 import com.aware.*;
 
 public class MainActivity extends AppCompatActivity {
-    Button button;
-    private TextView mTextMessage;
-    private ImageView imageView;
-    private String fullScreenInd;
+    Button meditate_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        button = (Button) findViewById(R.id.meditate_button);
+        meditate_button = (Button) findViewById(R.id.meditate_button);
 
         // Capture button clicks
-        button.setOnClickListener(new View.OnClickListener() {
+        meditate_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
 
                 // Start NewActivity.class
@@ -36,31 +33,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
-
-        //mTextMessage = (TextView) findViewById(R.id.message);
-        //BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        //navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-        /*Intent aware = new Intent(this, Aware.class);
-        startService(aware);
-        Aware.startScreen(this);*/
-
-        //Intent aware = new Intent(this, Aware.class);
-
-
-
-        //StartService(aware);
-        Aware.startScreen(this);
-
-       /* Screen.setSensorObserver(new Screen.AWARESensorObserver() {
-            @Override
-            public void onScreenOn() {
-
-            }
-
-
-
-        });*/
 
     }
 

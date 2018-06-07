@@ -187,18 +187,18 @@
                 android:text="Home" />
 
             <RadioButton
-                android:id="@+id/radioButton15"
+                android:id="@+id/work_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="RadioButton" />
+                android:text="Work" />
 
             <RadioButton
-                android:id="@+id/radioButton17"
+                android:id="@+id/bed_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="RadioButton" />
+                android:text="Bed" />
         </LinearLayout>
 
         <LinearLayout
@@ -207,25 +207,25 @@
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/radioButton11"
+                android:id="@+id/break_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="RadioButton" />
+                android:text="Break" />
 
             <RadioButton
-                android:id="@+id/radioButton10"
+                android:id="@+id/train_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="RadioButton" />
+                android:text="Train" />
 
             <RadioButton
-                android:id="@+id/radioButton9"
+                android:id="@+id/airplane_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="RadioButton" />
+                android:text="Airplane" />
         </LinearLayout>
 
     </RadioGroup>
