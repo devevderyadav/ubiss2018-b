@@ -17,6 +17,8 @@ public class Questionnaire extends AppCompatActivity {
     RadioButton home_button, work_button, bed_button, break_button, train_button, airplane_button;
     String mood, location;
 
+    private DatabaseHandler db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -206,6 +208,15 @@ public class Questionnaire extends AppCompatActivity {
             public void onClick(View v) {
                 Log.i("Questionnaire", "mood: " + mood);
                 Log.i("Questionnaire", "location: " + location);
+
+                db = new DatabaseHandler(getApplicationContext());
+
+                MeditationSession meditation = new MeditationSession("1", "angry", "home", "10 minutes",
+                        "birds", "guided by Erkki", "sad", "10000000000");
+
+                db.addMeditationSession(meditation);
+
+                db.getMeditationSessions();
             }
         });
     }
