@@ -55,7 +55,7 @@ public class Play extends AppCompatActivity {
 
                     }
                     public  void onFinish(){
-                        txtTimer.setText("FINISH!!");
+                        txtTimer.setText("");
                         play.setText("Play");
                         mediaPlayer.stop();
 

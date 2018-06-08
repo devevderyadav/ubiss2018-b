@@ -34,7 +34,14 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+
     SessionHRs  sessionHRs= new SessionHRs();
+
+    MeditationSession meditationSession;
+    private DatabaseHandler db;
+
+    String lowestHR, highestHR ;
 
     /*Context context;*/
 
@@ -61,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
     };*/
     Button meditate_button;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
        /* navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 */
 
+
+
+        db = new DatabaseHandler(getApplicationContext());
     }
 
 
@@ -124,7 +136,37 @@ public class MainActivity extends AppCompatActivity {
 
                     Log.d("lowestHR", String.format("%d", sessionHRs.getLowestHR(hr)));
 
+                    lowestHR = String.format("%d", sessionHRs.getLowestHR(hr));
+                    Log.d("Murad Heart Rate Lowest:", lowestHR);
+
+
+                    // database
+
+
+                    //MeditationSession meditation = new MeditationSession("1", "angry", "home", "10 minutes",
+                    //        "birds", "guided by Erkki", "sad", "10000000000");
+
+                   // db.addMeditationSession(meditation);
+
+                    //db.getMeditationSessions();
+
+//                    meditationSession.setLHr(lowestHR);
+
                     Log.d("highestHR", String.format("%d", sessionHRs.getHighestHR(hr)));
+                    highestHR = String.format("%d", sessionHRs.getHighestHR(hr));
+
+                    Log.d("Murad Heart Rate Highest:", highestHR);
+                   // meditationSession.setHHr(highestHR);
+
+
+/*
+                    meditationSession = new MeditationSession("1", "angry", "home", "10 minutes",
+                                    "birds", "guided by Erkki", "sad", lowestHR,highestHR);
+
+                    db.addMeditationSession(meditationSession);
+
+
+                    */
 
 
                     /*Log.d("restingHeartRate",  acthr.get);

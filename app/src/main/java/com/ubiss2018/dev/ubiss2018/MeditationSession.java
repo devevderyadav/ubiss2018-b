@@ -9,7 +9,7 @@ public class MeditationSession implements Serializable {
     }
 
     public MeditationSession(String id, String mood_start, String location_start, String duration,
-                             String sound, String guidance, String mood_end, String hr) {
+                             String sound, String guidance, String mood_end, String lhr, String hhr) {
         super();
         this.id = id;
         this.mood_start = mood_start;
@@ -18,7 +18,8 @@ public class MeditationSession implements Serializable {
         this.sound = sound;
         this.guidance = guidance;
         this.mood_end = mood_end;
-        this.hr = hr;
+        this.lhr = lhr;
+        this.hhr = hhr;
     }
 
     private String id;
@@ -28,7 +29,8 @@ public class MeditationSession implements Serializable {
     private String sound;
     private String guidance;
     private String mood_end;
-    private String hr;
+    private String lhr;
+    private String hhr;
 
 
     public String regguls(String regguls, String rogguls) {
@@ -88,11 +90,19 @@ public class MeditationSession implements Serializable {
         this.mood_end = mood_end;
     }
 
-    public String getHr() {
-        return hr;
+    public String getLHr() {
+        return lhr;
     }
 
-    public void setHr(String hr) {
-        this.hr = hr;
+    public void setLHr(String lhr) {
+        this.lhr = lhr;
+    }
+
+    public String getHHr() {
+        return hhr;
+    }
+
+    public void setHHr(String hhr) {
+        this.hhr = hhr;
     }
 }

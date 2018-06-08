@@ -24,7 +24,7 @@
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="42dp"
-        android:text="of 30 seconds Left"
+        android:text="of 30 seconds left"
         android:textColor="@color/colorWhite"
         android:textSize="18sp"/>
 

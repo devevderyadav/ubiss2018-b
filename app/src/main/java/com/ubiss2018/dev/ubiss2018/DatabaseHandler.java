@@ -26,7 +26,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String SOUND = "sound";
     private static final String GUIDANCE = "guidance";
     private static final String MOOD_END = "mood_end";
-    private static final String HR = "hr";
+    private static final String LHR = "lhr";
+    private static final String HHR = "hhr";
+
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -36,7 +38,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATION_TABLE = "CREATE TABLE Meditation ( "
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT, mood_start STRING, location_start STRING, meditation_duration STRING, sound " +
-                "STRING, guidance STRING, mood_end STRING, hr STRING )";
+                "STRING, guidance STRING, mood_end STRING, lhr STRING, hhr STRING )";
 
         db.execSQL(CREATION_TABLE);
     }
@@ -56,7 +58,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(SOUND, meditationsession.getSound());
         values.put(GUIDANCE, meditationsession.getGuidance());
         values.put(MOOD_END, meditationsession.getMoodEnd());
-        values.put(HR, meditationsession.getHr());
+        values.put(LHR, meditationsession.getLHr());
+        values.put(HHR, meditationsession.getHHr());
 
         db.insert(TABLE_NAME, null, values);
         db.close();
@@ -88,9 +91,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     String sound = cursor.getString(cursor.getColumnIndex(SOUND));
                     String guidance = cursor.getString(cursor.getColumnIndex(GUIDANCE));
                     String mood_end = cursor.getString(cursor.getColumnIndex(MOOD_END));
-                    String hr = cursor.getString(cursor.getColumnIndex(HR));
+                    String lhr = cursor.getString(cursor.getColumnIndex(LHR));
+                    String hhr = cursor.getString(cursor.getColumnIndex(HHR));
                     meditationList.add(new MeditationSession(m_id,mood_start, location_start, meditation_duration,
-                            sound, guidance, mood_end, hr));
+                            sound, guidance, mood_end, lhr, hhr));
                     cursor.moveToNext();
 
                     Log.i("DatabaseHandler", "KEY_ID " + m_id);
@@ -100,7 +104,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     Log.i("DatabaseHandler", "SOUND " + sound);
                     Log.i("DatabaseHandler", "GUIDANCE " + guidance);
                     Log.i("DatabaseHandler", "MOOD_END " + mood_end);
-                    Log.i("DatabaseHandler", "HR " + hr);
+                    Log.i("DatabaseHandler", "HR " + lhr);
+                    Log.i("DatabaseHandler", "HR " + hhr);
 
                 } catch (Exception e) {
                 }
