@@ -44,6 +44,7 @@ public class Play extends AppCompatActivity {
                     public void onTick(long millisUntilFinished){
 
 
+                        
                         play.setText("Pause");
 
                         if(counter > 0 ){

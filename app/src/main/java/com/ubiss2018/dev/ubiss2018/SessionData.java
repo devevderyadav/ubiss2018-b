@@ -16,7 +16,7 @@ import java.util.List;
 public class SessionData extends AppCompatActivity {
 
 
-    Button btnPlay;
+    Button btnPlay, btnBack;
 
 
     ExpandableListAdapter listAdapter;
@@ -42,6 +42,10 @@ public class SessionData extends AppCompatActivity {
         });*/
 
         btnPlay = (Button) findViewById(R.id.btnStart);
+
+        btnBack = (Button) findViewById(R.id.btnBack);
+
+
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,6 +56,14 @@ public class SessionData extends AppCompatActivity {
         });
 
 
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(SessionData.this,Questionnaire.class);
+                startActivity(intent);
+
+            }
+        });
 
 
 
@@ -119,6 +131,11 @@ public class SessionData extends AppCompatActivity {
                                     listDataHeader.get(groupPosition)).get(
                                     childPosition), Toast.LENGTH_SHORT)
                             .show();
+
+                    // data of selected option
+                    String listdata = listDataChild.get(
+                            listDataHeader.get(groupPosition)).get(
+                            childPosition);
 
                     return false;
                 }
